@@ -2,7 +2,7 @@ import pyrosim.pyrosim as pyrosim
 
 length, width, height = 1, 1, 1
 x, y, z = 0, 0, 0.5
-x2, y2, z2 = 1, 0, 1.5
+x2, y2, z2 = 0, 0, 1.5
 world_x, world_y, world_z = -5, 5, 0.5
 
 def Create_World():
@@ -12,7 +12,10 @@ def Create_World():
 
 def Create_Robot():
     pyrosim.Start_URDF("body.urdf")
-    pyrosim.Send_Cube(name="Torso", pos=[x, y, z], size=[length, width, height])
+    pyrosim.Send_Cube(name="Link0", pos=[x, y, z], size=[length, width, height])
+    pyrosim.Send_Joint( name = "Link0_Link1" , parent= "Link0" , child = "Link1" , 
+    type = "revolute", position = [0,0,0])
+    pyrosim.Send_Cube(name="Link1", pos=[x2, y2, z2], size=[length, width, height])
     pyrosim.End()
 
 Create_World()
