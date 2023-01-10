@@ -4,7 +4,7 @@ length, width, height = 1, 1, 1
 x, y, z = 0, 0, 0.5
 x2, y2, z2 = 1, 0, 1.5
 
-pyrosim.Start_SDF("boxes.sdf")
+pyrosim.Start_SDF("world.sdf")
 pyrosim.Send_Cube(name="Box", pos=[x, y, z], size=[length, width, height])
 #for k in range(5):
 #    for j in range(5):
