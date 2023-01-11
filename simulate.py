@@ -23,5 +23,6 @@ for i in range(1000):
     #print(backLegTouch)
     time.sleep(1/60)
     #print(i)
+numpy.save('data\sensorvals.npy', backLegSensorValues)
 p.disconnect()
 print(backLegSensorValues)
