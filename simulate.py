@@ -26,7 +26,14 @@ for i in range(1000):
         bodyIndex = robotId,
         jointName = 'Torso_BackLeg',
         controlMode = p.POSITION_CONTROL,
-        targetPosition = 0.0,
+        targetPosition = 0.4,
+        maxForce = 500
+    )
+    pyrosim.Set_Motor_For_Joint(
+        bodyIndex = robotId, 
+        jointName = 'Torso_FrontLeg',
+        controlMode = p.POSITION_CONTROL,
+        targetPosition = -0.4,
         maxForce = 500
     )
     #print(backLegTouch)
