@@ -3,6 +3,7 @@ import pybullet_data
 import time 
 import pyrosim.pyrosim as pyrosim
 import numpy
+import random
 
 
 physicsClient = p.connect(p.GUI)
@@ -26,14 +27,14 @@ for i in range(1000):
         bodyIndex = robotId,
         jointName = 'Torso_BackLeg',
         controlMode = p.POSITION_CONTROL,
-        targetPosition = 0.4,
+        targetPosition = random.uniform(-0.15, 0.15),
         maxForce = 500
     )
     pyrosim.Set_Motor_For_Joint(
         bodyIndex = robotId, 
         jointName = 'Torso_FrontLeg',
         controlMode = p.POSITION_CONTROL,
-        targetPosition = -0.4,
+        targetPosition = random.uniform(-0.15, 0.15),
         maxForce = 500
     )
     #print(backLegTouch)
