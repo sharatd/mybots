@@ -7,10 +7,11 @@ import random
 import matplotlib.pylab as plt
 
 amplitude_backleg = numpy.pi/4
-frequency_backleg = 10
+frequency_backleg = 5
 phaseOffset_backleg = numpy.pi/4
+
 amplitude_frontleg = numpy.pi/4
-frequency_frontleg = 10
+frequency_frontleg = 5
 phaseOffset_frontleg = 0
 
 physicsClient = p.connect(p.GUI)
