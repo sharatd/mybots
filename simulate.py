@@ -4,6 +4,7 @@ import time
 import pyrosim.pyrosim as pyrosim
 import numpy
 import random
+import matplotlib.pylab as plt
 
 
 physicsClient = p.connect(p.GUI)
@@ -18,6 +19,11 @@ p.loadSDF("world.sdf")
 pyrosim.Prepare_To_Simulate(robotId)
 backLegSensorValues = numpy.zeros(1000)
 frontLegSensorValues = numpy.zeros(1000)
+
+targetAngles = numpy.linspace(numpy.pi, -numpy.pi, 1000)
+numpy.save('data\Targetangles.npy', targetAngles)
+exit()
+
 
 for i in range(1000):
     p.stepSimulation()
