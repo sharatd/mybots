@@ -9,7 +9,7 @@ print(targetAngles)
 print(backLegSensorValues)
 print(frontLegSensorValues)
 
-targetAngles = numpy.sin(targetAngles)/1.25
+
 steps = numpy.linspace(0, 999, 1000)
 matplotlib.pyplot.plot(steps, targetAngles)
 matplotlib.pyplot.xlabel('Angle [rad]')
