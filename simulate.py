@@ -1,4 +1,4 @@
-from simulation import SIMULATION
+from simulation import SIMULATION 
 
 simulation = SIMULATION()
 # import pybullet as p
@@ -24,10 +24,9 @@ simulation = SIMULATION()
 # planeId = p.loadURDF("plane.urdf")
 # robotId = p.loadURDF("body.urdf")
 # p.loadSDF("world.sdf")
-
-
-
 # pyrosim.Prepare_To_Simulate(robotId)
+
+
 # backLegSensorValues = numpy.zeros(c.vectorSize)
 # frontLegSensorValues = numpy.zeros(c.vectorSize)
 # backLegMotorValues = numpy.zeros(c.vectorSize)
