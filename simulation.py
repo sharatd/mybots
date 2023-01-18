@@ -10,6 +10,7 @@ import constants as c
 class SIMULATION:
 
     def __init__(self):
+        self.physicsClient = p.connect(p.GUI)
         self.world = WORLD()
         self.robot = ROBOT()
 
@@ -23,13 +24,14 @@ class SIMULATION:
         self.phaseOffset_frontleg = c.phaseOffset_frontleg
 
 
-        self.physicsClient = p.connect(p.GUI)
+        
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0, 0, -9.8)
         self.planeId = p.loadURDF("plane.urdf")
-        self.robotId = p.loadURDF("body.urdf")
+        #self.robotId = p.loadURDF("body.urdf")
         p.loadSDF("world.sdf")
-        pyrosim.Prepare_To_Simulate(self.robotId)
+        #pyrosim.Prepare_To_Simulate(self.robotId)
+        
 
         self.backLegSensorValues = numpy.zeros(c.vectorSize)
         self.frontLegSensorValues = numpy.zeros(c.vectorSize)
@@ -42,19 +44,21 @@ class SIMULATION:
         self.targetAngles_frontleg = self.amplitude_frontleg * numpy.sin(self.frequency_frontleg * self.targetAngles + self.phaseOffset_frontleg)
 
     def Run(self):
+        
         for i in range(c.vectorSize):
+            
             p.stepSimulation()
             self.backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
             self.frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
             pyrosim.Set_Motor_For_Joint(
-                bodyIndex = self.robotId,
+                bodyIndex = self.robot.robotId,
                 jointName = 'Torso_BackLeg',
                 controlMode = p.POSITION_CONTROL,
                 targetPosition = self.targetAngles_backleg[i],
                 maxForce = c.maxForce
             )
             pyrosim.Set_Motor_For_Joint(
-                bodyIndex = self.robotId, 
+                bodyIndex = self.robot.robotId, 
                 jointName = 'Torso_FrontLeg',
                 controlMode = p.POSITION_CONTROL,
                 targetPosition = self.targetAngles_frontleg[i],
@@ -62,5 +66,8 @@ class SIMULATION:
             )
             time.sleep(1/60)
             print(i)
+
+    def __del__(self):
+        p.disconnect()
     
 
