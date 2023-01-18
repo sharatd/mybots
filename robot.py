@@ -1,6 +1,7 @@
 from sensor import SENSOR
 import pyrosim.pyrosim as pyrosim
 import pybullet as p
+import constants as c
 
 class ROBOT:
 
@@ -15,3 +16,10 @@ class ROBOT:
         self.sensors = {}
         for linkName in pyrosim.linkNamesToIndices:
             self.sensors[linkName] = SENSOR(linkName)
+
+    def Sense(self, i):
+        for sensor in self.sensors:
+            self.sensors[sensor].Get_Value(i)
+        #self.frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
+
+    

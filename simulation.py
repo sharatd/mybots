@@ -14,7 +14,7 @@ class SIMULATION:
         self.physicsClient = p.connect(p.GUI)
         self.world = WORLD()
         self.robot = ROBOT()
-        exit()
+        
         
         
         self.amplitude_backleg = c.amplitude_backleg
@@ -40,7 +40,6 @@ class SIMULATION:
         self.backLegMotorValues = numpy.zeros(c.vectorSize)
         self.frontLegMotorValues = numpy.zeros(c.vectorSize)
 
-
         self.targetAngles = numpy.linspace(-numpy.pi, numpy.pi, c.vectorSize)
         self.targetAngles_backleg = self.amplitude_backleg * numpy.sin(self.frequency_backleg * self.targetAngles + self.phaseOffset_backleg)
         self.targetAngles_frontleg = self.amplitude_frontleg * numpy.sin(self.frequency_frontleg * self.targetAngles + self.phaseOffset_frontleg)
@@ -50,8 +49,9 @@ class SIMULATION:
         for i in range(c.vectorSize):
             
             p.stepSimulation()
-            self.backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
-            self.frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
+            self.robot.Sense(i)
+            #self.backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
+            #self.frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
             pyrosim.Set_Motor_For_Joint(
                 bodyIndex = self.robot.robotId,
                 jointName = 'Torso_BackLeg',
