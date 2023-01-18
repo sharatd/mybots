@@ -23,3 +23,7 @@ class ROBOT:
         #self.frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
 
     
+    def Prepare_To_Act(self):
+        for jointName in pyrosim.jointNamesToIndices:
+            self.motors[jointName] = SENSOR(jointName)
+    

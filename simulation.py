@@ -35,10 +35,10 @@ class SIMULATION:
         #pyrosim.Prepare_To_Simulate(self.robotId)
         
 
-        self.backLegSensorValues = numpy.zeros(c.vectorSize)
-        self.frontLegSensorValues = numpy.zeros(c.vectorSize)
-        self.backLegMotorValues = numpy.zeros(c.vectorSize)
-        self.frontLegMotorValues = numpy.zeros(c.vectorSize)
+        # self.backLegSensorValues = numpy.zeros(c.vectorSize)
+        # self.frontLegSensorValues = numpy.zeros(c.vectorSize)
+        # self.backLegMotorValues = numpy.zeros(c.vectorSize)
+        # self.frontLegMotorValues = numpy.zeros(c.vectorSize)
 
         self.targetAngles = numpy.linspace(-numpy.pi, numpy.pi, c.vectorSize)
         self.targetAngles_backleg = self.amplitude_backleg * numpy.sin(self.frequency_backleg * self.targetAngles + self.phaseOffset_backleg)
