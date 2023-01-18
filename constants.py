@@ -1,6 +1,7 @@
 import numpy
 
 
+
 amplitude_backleg = numpy.pi/4
 frequency_backleg = 5
 phaseOffset_backleg = numpy.pi/4

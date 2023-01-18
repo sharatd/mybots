@@ -1,5 +1,6 @@
 from world import WORLD
 from robot import ROBOT
+from sensor import SENSOR
 import time 
 import numpy
 import pybullet as p
@@ -13,7 +14,8 @@ class SIMULATION:
         self.physicsClient = p.connect(p.GUI)
         self.world = WORLD()
         self.robot = ROBOT()
-
+        exit()
+        
         
         self.amplitude_backleg = c.amplitude_backleg
         self.frequency_backleg = c.frequency_backleg
