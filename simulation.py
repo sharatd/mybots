@@ -40,9 +40,9 @@ class SIMULATION:
         # self.backLegMotorValues = numpy.zeros(c.vectorSize)
         # self.frontLegMotorValues = numpy.zeros(c.vectorSize)
 
-        self.targetAngles = numpy.linspace(-numpy.pi, numpy.pi, c.vectorSize)
-        self.targetAngles_backleg = self.amplitude_backleg * numpy.sin(self.frequency_backleg * self.targetAngles + self.phaseOffset_backleg)
-        self.targetAngles_frontleg = self.amplitude_frontleg * numpy.sin(self.frequency_frontleg * self.targetAngles + self.phaseOffset_frontleg)
+        # self.targetAngles = numpy.linspace(-numpy.pi, numpy.pi, c.vectorSize)
+        # self.targetAngles_backleg = self.amplitude_backleg * numpy.sin(self.frequency_backleg * self.targetAngles + self.phaseOffset_backleg)
+        # self.targetAngles_frontleg = self.amplitude_frontleg * numpy.sin(self.frequency_frontleg * self.targetAngles + self.phaseOffset_frontleg)
 
     def Run(self):
         
@@ -50,26 +50,26 @@ class SIMULATION:
             
             p.stepSimulation()
             self.robot.Sense(i)
+            self.robot.Act(i)
             #self.backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
             #self.frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
-            pyrosim.Set_Motor_For_Joint(
-                bodyIndex = self.robot.robotId,
-                jointName = 'Torso_BackLeg',
-                controlMode = p.POSITION_CONTROL,
-                targetPosition = self.targetAngles_backleg[i],
-                maxForce = c.maxForce
-            )
-            pyrosim.Set_Motor_For_Joint(
-                bodyIndex = self.robot.robotId, 
-                jointName = 'Torso_FrontLeg',
-                controlMode = p.POSITION_CONTROL,
-                targetPosition = self.targetAngles_frontleg[i],
-                maxForce = c.maxForce
-            )
+            # pyrosim.Set_Motor_For_Joint(
+            #     bodyIndex = self.robot.robotId,
+            #     jointName = 'Torso_BackLeg',
+            #     controlMode = p.POSITION_CONTROL,
+            #     targetPosition = self.targetAngles_backleg[i],
+            #     maxForce = c.maxForce
+            # )
+            # pyrosim.Set_Motor_For_Joint(
+            #     bodyIndex = self.robot.robotId, 
+            #     jointName = 'Torso_FrontLeg',
+            #     controlMode = p.POSITION_CONTROL,
+            #     targetPosition = self.targetAngles_frontleg[i],
+            #     maxForce = c.maxForce
+            # )
             time.sleep(1/60)
             print(i)
 
     def __del__(self):
         p.disconnect()
     
-
