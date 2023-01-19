@@ -29,3 +29,5 @@ class MOTOR:
             maxForce = c.maxForce
         )
 
+    def Save_Values(self, i, robotId):
+        numpy.save('data\motorvalues.npy', self.motorValues)

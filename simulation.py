@@ -17,13 +17,13 @@ class SIMULATION:
         
         
         
-        self.amplitude_backleg = c.amplitude_backleg
-        self.frequency_backleg = c.frequency_backleg
-        self.phaseOffset_backleg = c.phaseOffset_backleg
+        # self.amplitude_backleg = c.amplitude_backleg
+        # self.frequency_backleg = c.frequency_backleg
+        # self.phaseOffset_backleg = c.phaseOffset_backleg
 
-        self.amplitude_frontleg = c.amplitude_frontleg
-        self.frequency_frontleg = c.frequency_frontleg
-        self.phaseOffset_frontleg = c.phaseOffset_frontleg
+        # self.amplitude_frontleg = c.amplitude_frontleg
+        # self.frequency_frontleg = c.frequency_frontleg
+        # self.phaseOffset_frontleg = c.phaseOffset_frontleg
 
 
         

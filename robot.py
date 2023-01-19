@@ -23,6 +23,7 @@ class ROBOT:
     def Sense(self, i):
         for sensor in self.sensors:
             self.sensors[sensor].Get_Value(i)
+            self.sensors[sensor].Save_Values(i)
         #self.frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
 
     
@@ -37,4 +38,4 @@ class ROBOT:
     def Act(self, i):
         for motor in self.motors:
             self.motors[motor].Set_Value(i, self.robotId)
-       
+            self.motors[motor].Save_Values(i, self.robotId)

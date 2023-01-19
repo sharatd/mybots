@@ -18,3 +18,7 @@ class SENSOR:
     def Get_Value(self, i):
         self.values[i] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
         #self.values[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
+
+    def Save_Values(self, i):
+        numpy.save('data\sensorvalsnew.npy', self.values)
+        #numpy.save('data\Frontlegsensorvals.npy', frontLegSensorValues)
